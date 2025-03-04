@@ -73,17 +73,50 @@ class Contact {
     return `Name: ${this.firstName} ${this.lastName}, Address: ${this.address}, ${this.city}, ${this.state} - ${this.zip}, Phone: ${this.phoneNumber}, Email: ${this.email}`;
   }
 }
+// UC-03
+// Address Book array to store contacts
+let addressBook = [];
 
-// contact creation
+// Function to add contact to address book
+function addContact(contact) {
+    addressBook.push(contact);
+    console.log("Contact added successfully!");
+}
+
+try{
+    // contact creation
 let contact1 = new Contact(
-  "Survesh",
-  "Bajaj",
-  "Sonagiri",
-  "Bhopal",
-  "Madhya Pradesh",
-  "462022",
-  "9876543210",
-  "sarvesh@example.com"
-);
+    "Survesh",
+    "Bajaj",
+    "Sonagiri",
+    "Bhopal",
+    "Madhya Pradesh",
+    "462022",
+    "9876543210",
+    "sarvesh@example.com"
+  );
+  addContact(contact1);
+let contact2 = new Contact(
+    "Pradeep",
+    "Pawar",
+    "Sonagiri",
+    "Bhopal",
+    "Madhya Pradesh",
+    "462022",
+    "9876543210",
+    "sarvesh@example.com"
+  );
+  addContact(contact2);
+}
+catch (error) {
+    console.error(error.message);
+}
 
-console.log(contact1.display());
+// Display all contacts in address book
+function displayAddressBook() {
+    console.log("\n---- Address Book ----");
+    addressBook.forEach((contact, index) => {
+        console.log(`${index + 1}. ${contact.display()}`);
+    });
+}
+displayAddressBook();
