@@ -77,9 +77,21 @@ class AddressBook {
     this.contacts = [];
   }
 
+  //Duplicate
   addContact(contact) {
-    this.contacts.push(contact);
-    console.log("Contact added successfully!");
+    // Duplicate check using filter on firstName and lastName
+    let duplicate = this.contacts.filter(
+      (existingContact) =>
+        existingContact.firstName === contact.firstName &&
+        existingContact.lastName === contact.lastName
+    );
+
+    if (duplicate.length > 0) {
+      console.log("Duplicate contact found. Cannot add the contact.");
+    } else {
+      this.contacts.push(contact);
+      console.log("Contact added successfully!");
+    }
   }
 
   findContact(firstName, lastName) {
@@ -191,8 +203,8 @@ try {
   myAddressBook.addContact(contact1);
 
   let contact2 = new Contact(
-    "Pradeep",
-    "Pawar",
+    "Sarvesh",
+    "Bajaj",
     "Sonagiri",
     "Bhopal",
     "MPState",
