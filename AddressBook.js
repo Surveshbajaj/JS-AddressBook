@@ -159,6 +159,20 @@ class AddressBook {
       console.log("Contact not found.");
     }
   }
+  findContact(firstName, lastName) {
+    return this.contacts.find(
+      (contact) =>
+        contact.firstName.toLowerCase() === firstName.toLowerCase() &&
+        contact.lastName.toLowerCase() === lastName.toLowerCase()
+    );
+  }
+
+  // UC-06: Count Contacts using Reduce
+  countContacts() {
+    const count = this.contacts.reduce((total) => total + 1, 0);
+    console.log(`Total number of contacts: ${count}`);
+    return count;
+  }
 }
 
 let myAddressBook = new AddressBook();
@@ -207,3 +221,6 @@ myAddressBook.deleteContact("Pradeep", "Pawar");
 
 console.log("\n---- After Delete ----");
 myAddressBook.displayAddressBook();
+
+//UC - 6 : Count contacts
+myAddressBook.countContacts();
