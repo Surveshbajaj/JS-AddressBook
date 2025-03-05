@@ -185,6 +185,32 @@ class AddressBook {
     console.log(`Total number of contacts: ${count}`);
     return count;
   }
+  //UC-08
+  // Search contacts by city
+  searchByCity(city) {
+    let personsInCity = this.contacts.filter(
+      (contact) => contact.city === city
+    );
+    if (personsInCity.length > 0) {
+      console.log(`\nContacts in ${city}:`);
+      personsInCity.forEach((contact) => console.log(contact.display()));
+    } else {
+      console.log(`\nNo contacts found in ${city}.`);
+    }
+  }
+  //UC-08
+  // Search contacts by state
+  searchByState(state) {
+    let personsInState = this.contacts.filter(
+      (contact) => contact.state === state
+    );
+    if (personsInState.length > 0) {
+      console.log(`\nContacts in ${state}:`);
+      personsInState.forEach((contact) => console.log(contact.display()));
+    } else {
+      console.log(`\nNo contacts found in ${state}.`);
+    }
+  }
 }
 
 let myAddressBook = new AddressBook();
@@ -236,3 +262,8 @@ myAddressBook.displayAddressBook();
 
 //UC - 6 : Count contacts
 myAddressBook.countContacts();
+
+//UC - 8 : Search By City
+myAddressBook.searchByCity("Bhopal");
+//UC - 8 : Search By State
+myAddressBook.searchByState("MPState");
